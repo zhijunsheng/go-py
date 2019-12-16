@@ -10,6 +10,15 @@ STONE_TO_CHAR = {
   gotypes.Player.white: 'o ',
 }
 
+def print_move(player, move):
+  if move.is_pass:
+    move_str = 'passes'
+  elif move.is_resign:
+    move_str = 'resigns'
+  else:
+    move_str = '%s%d' % (COLS[move.point.col - 1], move.point.row)
+  print('%s %s' % (player, move_str))
+
 def print_board(board):
   for row in range(board.num_rows, 0, -1):
     bump = " " if row <= 9 else ""
@@ -30,7 +39,7 @@ def main():
 
   cnt = 0
   while True:
-    time.sleep(1.0)
+    time.sleep(5.0)
 
     print(chr(27) + "[2J")
     print_board(game.board)
@@ -38,6 +47,7 @@ def main():
     player = gotypes.Player.black if cnt % 2 == 0 else gotypes.Player.white
     cnt += 1
     bot_move = bots[player].select_move(game)
+    print_move(game.next_player, bot_move)
     game = game.apply_move(bot_move)
     
 
