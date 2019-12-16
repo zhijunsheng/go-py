@@ -2,7 +2,6 @@ from dlgo.agent import naive
 from dlgo.goboard_slow import Board 
 from dlgo import gotypes
 import time
-import random
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
 STONE_TO_CHAR = {

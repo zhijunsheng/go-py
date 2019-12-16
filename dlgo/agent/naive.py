@@ -1,7 +1,8 @@
 import random
+from dlgo.agent.base import Agent
 from dlgo import gotypes
 
-class RandomBot:
+class RandomBot(Agent):
   def select_move(self):
     candidates = []
     for row in range(1, 19):
