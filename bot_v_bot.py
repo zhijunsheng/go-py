@@ -30,15 +30,16 @@ def main():
 
   cnt = 0
   while True:
-    player = gotypes.Player.black if cnt % 2 == 0 else gotypes.Player.white
-    cnt += 1
-    bot_move = bots[player].select_move()
-    game.board.place_stone(player, bot_move)
     time.sleep(1.0)
-    
+
     print(chr(27) + "[2J")
     print_board(game.board)
     print()
+    player = gotypes.Player.black if cnt % 2 == 0 else gotypes.Player.white
+    cnt += 1
+    bot_move = bots[player].select_move(game)
+    game = game.apply_move(bot_move)
+    
 
 if __name__ == '__main__':
   main()
