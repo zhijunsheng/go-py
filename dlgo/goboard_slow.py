@@ -30,6 +30,10 @@ class Board():
   def place_stone(self, player, point):
     self._grid[point] = player
 
+  def is_on_grid(self, point):
+    return 1 <= point.row <= self.num_rows and \
+           1 <= point.col <= self.num_cols
+
   def get(self, point):
     return self._grid.get(point)
 
