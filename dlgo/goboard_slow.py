@@ -64,3 +64,12 @@ class GameState():
     if second_last_move is None:
       return False
     return self.last_move.is_pass and second_last_move.is_pass
+
+  def is_valid_move(self, move):
+    if self.is_over():
+      return False
+    if move.is_pass or move.is_resign:
+      return True
+    return (
+      self.board.get(move.point) is None
+      )
