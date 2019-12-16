@@ -37,16 +37,13 @@ def main():
   }
   game = goboard_slow.GameState.new_game(board_size)
 
-  cnt = 0
-  while True:
-    time.sleep(5.0)
+  while not game.is_over():
+    time.sleep(2.0)
 
     print(chr(27) + "[2J")
     print_board(game.board)
     print()
-    player = gotypes.Player.black if cnt % 2 == 0 else gotypes.Player.white
-    cnt += 1
-    bot_move = bots[player].select_move(game)
+    bot_move = bots[game.next_player].select_move(game)
     print_move(game.next_player, bot_move)
     game = game.apply_move(bot_move)
     
