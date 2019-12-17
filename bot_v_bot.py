@@ -10,6 +10,9 @@ STONE_TO_CHAR = {
   gotypes.Player.white: 'o ',
 }
 
+def testCapture(game):
+  game.apply_move(goboard_slow.Move.play(gotypes.Point(5, 10))) 
+
 def print_move(player, move):
   if move.is_pass:
     move_str = 'passes'
@@ -36,6 +39,8 @@ def main():
     gotypes.Player.white: naive.RandomBot(),
   }
   game = goboard_slow.GameState.new_game(board_size)
+
+#  testCapture(game)
 
   while not game.is_over():
     time.sleep(2.0)
